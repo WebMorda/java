@@ -48,16 +48,12 @@ public class Lesson4 {
 
     private static void task3() {
         int startYear = 2021;
+        int minYear = startYear - 200;
+        int maxYear = startYear + 100;
 
-        for (int i = 200; i > 0; i--) {
-            if ((startYear - i) % 79 == 0) {
-                System.out.println(startYear - i);
-            }
-        }
-
-        for (int i = 0; i < 100; i++) {
-            if ((startYear + i) % 79 == 0) {
-                System.out.println(startYear + i);
+        for (int year = minYear; year <= maxYear; year++) {
+            if (year % 79 == 0) {
+                System.out.println(year);
             }
         }
     }
