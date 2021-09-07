@@ -45,7 +45,9 @@ public class Lesson5 {
     }
 
     private static void task9() {
-        int[] arr = {-6, 4, 5, -8, 8, 10, 1, -7, 12, 2};
+        System.out.println("Task 9");
+
+        int[] arr = {-6, 2, 5, -8, 8, 10, 4, -7, 12, 1};
 
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = i + 1; j < arr.length; j++) {
@@ -57,11 +59,15 @@ public class Lesson5 {
     }
 
     private static void task8() {
-        int[] arr = {-6, 4, 5, -8, 8, 10, 1, -7, 12, 2};
+        System.out.println("Task 8");
+        int[] arr = {-6, 2, 5, -8, 8, 10, 4, -7, 12, 1};
 
-        for (int i = 0; i < arr.length - 1 && arr[i] + arr[i+1] == -2; i++) {
+        for (int i = 0, j = 1; j < arr.length; j++) {
 
-                System.out.println(arr[i] + " + " + arr[i+1] + " = -2");
+            if (arr[i] + arr[j] == -2) {
+                System.out.println(arr[i] + " + " + arr[j] + " = -2");
+                break;
+            }
         }
     }
 
@@ -78,32 +84,37 @@ public class Lesson5 {
     private static void task7() {
         int[] arr = {5, 4, 3, 2, 1};
 
-        Arrays.sort(arr);
+        for (int i = 0, j = arr.length - 1; i < arr.length / 2; i++, j--)
+        {
+            int tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+        }
+
         System.out.println(Arrays.toString(arr));
     }
 
     private static void task5() {
-        int[][] arr = {{1, 0, 1}, {0, 1, 0}, {1, 0, 1}};
+        int[][] arr = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
 
-        for (int i = 0; i < arr[0].length; i++){
-            for (int j = 0; j < arr[1].length; j++){
-                System.out.print(arr[i][j] + " ");
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (j == i || j == arr.length - 1 - i) {
+                    arr[i][j] = 1;
+                    System.out.print(arr[i][j]);
+                } else {
+                    arr[i][j] = 0;
+                    System.out.print(" ");
+                }
             }
             System.out.println();
         }
 
         System.out.println();
-
-        for (int[] row : arr) {
-            for (int column : row) {
-                System.out.print(column + " ");
-            }
-            System.out.println();
-        }
-    }
+}
 
     private static void task4() {
-        char[] reverseFullName = { 'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
+        char[] reverseFullName = {'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
 
         for (int i = reverseFullName.length - 1; i >= 0; i--) {
             System.out.print(reverseFullName[i]);
@@ -116,11 +127,11 @@ public class Lesson5 {
         int sum = 0;
         float average = 0;
 
-        for (int i = 0; i < arr.length; i++){
-            sum += arr[i];
+        for (int i : arr) {
+            sum = +i;
         }
 
-        average = sum / 30;
+        average = sum / arr.length;
 
         System.out.println("Средняя сумма трат за месяц составила " + average + " рублей.");
     }
@@ -140,9 +151,12 @@ public class Lesson5 {
         int minCycle = arr[0];
         int maxCycle = arr[0];
 
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i] < minCycle) minCycle = arr[i];
-            if (arr[i] > maxCycle) maxCycle = arr[i];
+        for (int i : arr) {
+            if (i < minCycle) {
+                minCycle = i;
+            } else if (i > maxCycle) {
+                maxCycle = i;
+            }
         }
 
         System.out.println("Минимальная трата " + minCycle);
@@ -153,8 +167,8 @@ public class Lesson5 {
         int[] arr = generateRandomArray();
         int sum = 0;
 
-        for (int i = 0; i < arr.length; i++){
-            sum += arr[i];
+        for (int i : arr) {
+            sum += i;
         }
 
         System.out.println("Сумма трат за месяц составила " + sum + " рублей");
