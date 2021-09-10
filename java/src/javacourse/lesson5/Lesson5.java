@@ -1,9 +1,6 @@
 package javacourse.lesson5;
 
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.OptionalInt;
 
 public class Lesson5 {
     public static void main(String[] args) {
@@ -48,11 +45,23 @@ public class Lesson5 {
         System.out.println("Task 9");
 
         int[] arr = {-6, 2, 5, -8, 8, 10, 4, -7, 12, 1};
+        int first = 0;
+        int last = arr.length - 1;
+        int sum = -2;
 
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] + arr[j] == -2) {
-                    System.out.println(arr[i] + " + " + arr[j] + " = - 2");
+        Arrays.sort(arr);
+
+        while (first < last) {
+            int result = arr[first] + arr[last];
+            if (result == sum) {
+                System.out.println(arr[first] + " + " + arr[last] + " = -2");
+                first++;
+                last--;
+            } else {
+                if (result < sum) {
+                    first++;
+                } else {
+                    last--;
                 }
             }
         }
@@ -61,12 +70,23 @@ public class Lesson5 {
     private static void task8() {
         System.out.println("Task 8");
         int[] arr = {-6, 2, 5, -8, 8, 10, 4, -7, 12, 1};
+        int first = 0;
+        int last = arr.length - 1;
+        int sum = -2;
 
-        for (int i = 0, j = 1; j < arr.length; j++) {
+        Arrays.sort(arr);
 
-            if (arr[i] + arr[j] == -2) {
-                System.out.println(arr[i] + " + " + arr[j] + " = -2");
+        while (first < last) {
+            int result = arr[first] + arr[last];
+            if (result == sum) {
+                System.out.println(arr[first] + " + " + arr[last] + " = -2");
                 break;
+            } else {
+                if (result < sum) {
+                    first++;
+                } else {
+                    last--;
+                }
             }
         }
     }
@@ -84,8 +104,7 @@ public class Lesson5 {
     private static void task7() {
         int[] arr = {5, 4, 3, 2, 1};
 
-        for (int i = 0, j = arr.length - 1; i < arr.length / 2; i++, j--)
-        {
+        for (int i = 0, j = arr.length - 1; i < arr.length / 2; i++, j--) {
             int tmp = arr[i];
             arr[i] = arr[j];
             arr[j] = tmp;
@@ -95,23 +114,26 @@ public class Lesson5 {
     }
 
     private static void task5() {
-        int[][] arr = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+        int[][] arr = new int[3][3];
 
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
                 if (j == i || j == arr.length - 1 - i) {
                     arr[i][j] = 1;
-                    System.out.print(arr[i][j]);
-                } else {
-                    arr[i][j] = 0;
-                    System.out.print(" ");
                 }
             }
             System.out.println();
         }
 
+        for (int[] row : arr) {
+            for (int column : row) {
+                System.out.print(column + " ");
+            }
+            System.out.println();
+        }
+
         System.out.println();
-}
+    }
 
     private static void task4() {
         char[] reverseFullName = {'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
