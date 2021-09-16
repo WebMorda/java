@@ -107,6 +107,8 @@ public class Lesson6 {
 
         String fullName = "ivanov ivan ivanovich";
 
+        fullName = fullName.trim();
+
         int indexStart = fullName.indexOf(' ');
         int indexLast = fullName.lastIndexOf(' ');
 
@@ -129,23 +131,12 @@ public class Lesson6 {
 
         char[] arr = tree.toCharArray();
 
-        boolean stop = false;
-        char temp;
-        while (!stop) {
-            stop = true;
-
-            for (int i = 0; i < arr.length - 1; i++) {
-                if (arr[i] > arr[i + 1]) {
-                    stop = false;
-
-                    temp = arr[i];
-                    arr[i] = arr[i + 1];
-                    arr[i + 1] = temp;
-                }
-            }
-        }
         StringBuilder sb = new StringBuilder(new String(arr));
 
+        for (int i = 0; i < arr.length; i++) {
+            int index = Character.getNumericValue(arr[i]);
+            sb.setCharAt(index-1, arr[i]);
+        }
         System.out.println("Данные строки – " + sb);
     }
 
