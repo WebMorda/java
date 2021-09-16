@@ -129,13 +129,11 @@ public class Lesson6 {
         String two = "246";
         String tree = one + two;
 
-        char[] arr = tree.toCharArray();
+        StringBuilder sb = new StringBuilder(tree);
 
-        StringBuilder sb = new StringBuilder(new String(arr));
-
-        for (int i = 0; i < arr.length; i++) {
-            int index = Character.getNumericValue(arr[i]);
-            sb.setCharAt(index-1, arr[i]);
+        for (int i = 0; i < tree.length(); i++) {
+            int index = Character.getNumericValue(tree.charAt(i));
+            sb.setCharAt(index-1, tree.charAt(i));
         }
         System.out.println("Данные строки – " + sb);
     }
