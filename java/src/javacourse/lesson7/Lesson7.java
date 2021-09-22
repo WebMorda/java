@@ -1,6 +1,7 @@
 package javacourse.lesson7;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Lesson7 {
     public static void main(String[] args) {
@@ -21,7 +22,9 @@ public class Lesson7 {
     static void task1() {
         printHeading(1);
 
-        for (int year = 2000; year < 2021; year++) {
+        int finishYear = 2021;
+
+        for (int year = 2000; year < finishYear; year++) {
             leapYear(year);
         }
     }
@@ -40,7 +43,7 @@ public class Lesson7 {
     static void task2() {
         printHeading(2);
 
-        java.util.Random random = new java.util.Random();
+        Random random = new Random();
         int clientOS = random.nextInt(2);
         int clientDeviceYear = random.nextInt(5) + 2015;
 
@@ -118,12 +121,12 @@ public class Lesson7 {
 
         int[] arr = {3, 2, 1, 6, 5};
 
-        changeArray(arr);
+        reverseArray(arr);
 
         System.out.println(Arrays.toString(arr));
     }
 
-    private static void changeArray(int[] arr) {
+    private static void reverseArray(int[] arr) {
         for (int i = 0, j = arr.length - 1; i < arr.length / 2; i++, j--) {
             int tmp = arr[i];
             arr[i] = arr[j];
@@ -146,11 +149,11 @@ public class Lesson7 {
     private static float getAverage(int[] arr) {
         int sum = getSum(arr);
 
-        return getAverage(arr, sum);
+        return getAverage(arr.length, sum);
     }
 
-    private static int getAverage(int[] arr, int sum) {
-        return sum / arr.length;
+    private static int getAverage(int arrLength, int sum) {
+        return sum / arrLength;
     }
 
     private static int getSum(int[] arr) {
