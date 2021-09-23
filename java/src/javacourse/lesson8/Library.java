@@ -24,18 +24,17 @@ public class Library {
         }
     }
 
-    public void printByName(String name){
+    public void printByName(String name) {
         for (int i = 0; i < books.length; i++) {
-            if (books[i] != null && books[i].getName().equals(name)){
+            if (books[i] != null && books[i].getName().equals(name)) {
                 System.out.println(books[i].getName() + " by " + books[i].getAuthor().toString() + " was published in " + books[i].getYearPublisher());
             }
         }
     }
 
-    public void changeYearByName(String name, int yearPublisher){
+    public void changeYearByName(String name, int yearPublisher) {
         for (int i = 0; i < books.length; i++) {
-            if (books[i] != null && books[i].getName().equals(name)){
-                books[i].setYearPublisher(yearPublisher);
+            if (books[i] != null && books[i].getName().equals(name)) {
             }
         }
     }
