@@ -3,22 +3,30 @@ package javacourse.courseWork;
 public class Main {
     public static void main(String[] args) {
         EmployeeBook employeeBook = new EmployeeBook();
-
+        Employee employee;
         employeeBook.printAllEmployees();
         separator();
         employeeBook.printAllEmployeeSum();
         separator();
-        employeeBook.printAllMinSalary();
+        employee = employeeBook.printAllMinSalary();
+        System.out.println("Сотрудник с минимальной зарплатой");
+        employeeBook.printEmployee(employee);
         separator();
-        employeeBook.printAllMaxSalary();
+        employee = employeeBook.printAllMaxSalary();
+        System.out.println("Сотрудник с максимальной зарплатой");
+        employeeBook.printEmployee(employee);
         separator();
         employeeBook.printFullNames();
         separator();
         employeeBook.indexAllSalary(10);
         separator();
-        employeeBook.printDepartmentMaxSalary(2);
+        employee = employeeBook.printDepartmentMaxSalary(2);
+        System.out.println("Сотрудник с максимальной зарплатой в отделе №" + employee.getDepartment());
+        employeeBook.printEmployee(employee);
         separator();
         employeeBook.printDepartmentMinSalary(2);
+        System.out.println("Сотрудник с минимальной зарплатой в отделе №\" + employee.getDepartment()");
+        employeeBook.printEmployee(employee);
         separator();
         employeeBook.printDepartmentSum(1);
         separator();

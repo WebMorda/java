@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class EmployeeBook {
-    private Employee[] employees = new Employee[10];
+    private Employee[] employees = new Employee[15];
 
     public EmployeeBook() {
         addEmployeeToArray(employees);
@@ -54,10 +54,6 @@ public class EmployeeBook {
                 System.out.println(employee);
             }
         }
-    }
-
-    public Employee[] getEmployees() {
-        return employees;
     }
 
     public void printSmallSalary(int smallSalary) {
@@ -202,9 +198,8 @@ public class EmployeeBook {
         return sum;
     }
 
-    private void printEmployee(Employee salary) {
-        System.out.printf("\nСотрудник с максимальной зарплатой" +
-                "\n%s\n", salary);
+    public void printEmployee(Employee salary) {
+        System.out.printf("\n%s\n", salary);
     }
 
     private void printShortEmployee(Employee[] e) {
