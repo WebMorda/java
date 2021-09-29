@@ -1,29 +1,27 @@
-package javacourse.course_work;
+package javacourse.courseWork;
 
 public class Employee {
-    private static int Id;
+    private static int counter;
 
     private int id;
     private String firstName;
     private String lastName;
     private String middleName;
     private int department;
-    private int salary;
+    private float salary;
 
     public Employee (String firstName,
                      String lastName,
                      String middleName,
                      int department,
-                     int salary){
-        this.id = ++Id;
+                     float salary){
+        this.id = ++counter;
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleName = middleName;
         this.department = department;
         this.salary = salary;
     }
-
-    public Employee(){}
 
     //region get
     public int getId() {
@@ -46,28 +44,14 @@ public class Employee {
         return department;
     }
 
-    public int getSalary() {
+    public float getSalary() {
         return salary;
     }
 
-    public String getFIO(){
+    public String getFullName(){
         return String.format("%s %s %s", lastName, firstName, middleName);
     }
 
-    public String getDepartmentName(int id){
-        switch (id){
-            case 1:
-                return "Поэзия";
-            case 2:
-                return "Акмеизм";
-            case 3:
-                return "Проза";
-            case 4:
-                return "Футуризм";
-            default:
-                return "";
-        }
-    }
     //endregion
 
     //region set
@@ -76,7 +60,7 @@ public class Employee {
         this.department = department;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(float salary) {
         this.salary = salary;
     }
 
@@ -87,7 +71,7 @@ public class Employee {
     public String toString(){
         return String.format("Id: %s | Фамилия: %s | Имя: %s | Отчество: %s | Отдел: %s | Зарплата: %s | " +
                 "\n----------------------------------------------------------------------------------------\n",
-                id, lastName, firstName, middleName, getDepartmentName(department), salary);
+                id, lastName, firstName, middleName, department, salary);
     }
     //endregion
 }
