@@ -1,6 +1,6 @@
 package javacourse.part2.lesson2;
 
-public class Bicycle implements ITyreService, ITransport {
+public class Bicycle implements ITyreService {
     private String modelName;
     private int wheelsCount;
 

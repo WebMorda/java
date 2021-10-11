@@ -1,6 +1,6 @@
 package javacourse.part2.lesson2;
 
-public class Truck implements ITyreService, IEngineService, ITrailerService, ITransport {
+public class Truck implements ITyreService, IEngineService, ITrailerService {
     private String modelName;
     private int wheelsCount;
 
