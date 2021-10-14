@@ -1,39 +1,29 @@
 package javacourse.part2.lesson2;
 
-public class Truck implements ITyreService, IEngineService, ITrailerService {
+public class Truck extends Transport {
     private String modelName;
     private int wheelsCount;
+
+    ServiceStation serviceStation = new ServiceStation();
 
     public Truck(String modelName, int wheelsCount) {
         this.modelName = modelName;
         this.wheelsCount = wheelsCount;
     }
 
-    public void updateTyre() {
-        System.out.println("Меняем покрышку");
-    }
-
-    public void checkEngine() {
-        System.out.println("Проверяем двигатель");
-    }
-
-    public void checkTrailer() {
-        System.out.println("Проверяем прицеп");
+    @Override
+    public void check() {
+        System.out.println("Обслуживаем " + modelName);
+        serviceStation.checkTyre(this);
+        serviceStation.checkEngine();
+        serviceStation.checkTrailer();
     }
 
     public String getModelName() {
         return modelName;
     }
 
-    public void setModelName(String modelName) {
-        this.modelName = modelName;
-    }
-
     public int getWheelsCount() {
         return wheelsCount;
-    }
-
-    public void setWheelsCount(int wheelsCount) {
-        this.wheelsCount = wheelsCount;
     }
 }
