@@ -6,7 +6,10 @@ import java.util.List;
 
 public interface IEmployeeService {
     Employee addEmployee(String firstName, String lastName);
-    String removeEmployee(String firstName, String lastName);
+
+    Boolean removeEmployee(String firstName, String lastName);
+
     Employee findEmployee(String firstName, String lastName);
+
     List<Employee> getAllEmployee();
 }

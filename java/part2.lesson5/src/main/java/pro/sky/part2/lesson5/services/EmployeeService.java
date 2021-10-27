@@ -28,35 +28,33 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public Employee addEmployee(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
-        employees.add(employee);
-        return employee;
+            Employee employee = new Employee(firstName, lastName);
+            if (employees.add(employee)) {
+                return employee;
+            } else {
+                throw new InternalServerError();
+            }
     }
 
     @Override
-    public String removeEmployee(String firstName, String lastName) {
+    public Boolean removeEmployee(String firstName, String lastName) {
         Employee employee = new Employee(firstName, lastName);
-        if (employees.contains(employee)){
-            employees.remove(employee);
-            return "Пользователь " + employee.getFirstName() + " " + employee.getLastName() + " удален!";
-        }
-        else {
-            return "Пользователь " + employee.getFirstName() + " " + employee.getLastName() + " не найден!";
-        }
+        return employees.remove(employee);
     }
 
     @Override
     public Employee findEmployee(String firstName, String lastName) {
-       Employee employee = new Employee(firstName, lastName);
-       if (employees.contains(employee)){
-           int index = employees.indexOf(employee);
-           return employees.get(index);
-       }
+        Employee employee = new Employee(firstName, lastName);
+        int index = employees.indexOf(employee);
+        if (index != -1) {
+            return employees.get(index);
+        }
         throw new NotFoundException();
     }
 
     @Override
     public List<Employee> getAllEmployee() {
-        return employees;
+        return new ArrayList<Employee>(employees) {
+        };
     }
 }
