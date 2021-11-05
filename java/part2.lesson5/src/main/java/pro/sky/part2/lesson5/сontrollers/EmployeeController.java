@@ -20,12 +20,12 @@ public class EmployeeController {
     }
 
     @GetMapping()
-    public String employee() {
+    public String loadIndexPage() {
         return "Добро пожаловать!";
     }
 
     @GetMapping(path = "/all")
-    public List<Employee> all() {
+    public List<Employee> getAllEmployeell() {
         return employeeService.getAllEmployee();
     }
 

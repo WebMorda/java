@@ -28,18 +28,20 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public Employee addEmployee(String firstName, String lastName) {
-            Employee employee = new Employee(firstName, lastName);
-            if (employees.add(employee)) {
-                return employee;
-            } else {
-                throw new InternalServerError();
-            }
+        Employee employee = new Employee(firstName, lastName);
+        if (employees.add(employee)) {
+            return employee;
+        }
+        throw new InternalServerError();
     }
 
     @Override
-    public Boolean removeEmployee(String firstName, String lastName) {
+    public Employee removeEmployee(String firstName, String lastName) {
         Employee employee = new Employee(firstName, lastName);
-        return employees.remove(employee);
+        if (employees.remove(employee)){
+            return employee;
+        }
+        throw new InternalServerError();
     }
 
     @Override
@@ -54,7 +56,6 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public List<Employee> getAllEmployee() {
-        return new ArrayList<Employee>(employees) {
-        };
+        return new ArrayList<Employee>(employees);
     }
 }
