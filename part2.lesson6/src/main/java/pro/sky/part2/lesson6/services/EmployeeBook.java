@@ -8,13 +8,7 @@ import java.util.Map;
 public interface EmployeeBook {
     Map<String, Employee> getAllEmployee();
 
-    int getSalary();
-
-    Employee getEmployeeMinSalary();
-
-    Employee getEmployeeMaxSalary();
-
-    int getAverageSalary();
-
     List<String> getFullnames();
+
+    void updateSalary(float index);
 }

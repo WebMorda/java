@@ -28,49 +28,6 @@ public class EmployeeBookImpl implements EmployeeBook {
         return new HashMap<>(employees);
     }
 
-    public int getSalary() {
-        return sumSalary();
-    }
-
-    @Override
-    public Employee getEmployeeMinSalary() {
-        Employee empMinSalary = null;
-
-        for (Employee employee : employees.values()) {
-            if (empMinSalary == null){
-                empMinSalary = employee;
-            } else {
-                if (employee.getSalary() < empMinSalary.getSalary()) {
-                    empMinSalary = employee;
-                }
-            }
-        }
-        return empMinSalary;
-    }
-
-    @Override
-    public Employee getEmployeeMaxSalary() {
-        Employee empMaxSalary = null;
-
-        for (Employee employee : employees.values()) {
-            if (empMaxSalary == null){
-                empMaxSalary = employee;
-            } else {
-                if (employee.getSalary() > empMaxSalary.getSalary()) {
-                    empMaxSalary = employee;
-                }
-            }
-        }
-        return empMaxSalary;
-    }
-
-    @Override
-    public int getAverageSalary(){
-        int sum = sumSalary();
-
-        return sum / employees.size();
-    }
-
     @Override
     public List<String> getFullnames(){
         List<String> fullName = new ArrayList<>();
@@ -82,14 +39,12 @@ public class EmployeeBookImpl implements EmployeeBook {
         return fullName;
     }
 
-    private int sumSalary() {
-        Collection<Employee> emp = employees.values();
-        int sum = 0;
-
-        for (Employee employee : emp) {
-            sum += employee.getSalary();
+    @Override
+    public void updateSalary(float index) {
+        for (Employee value : employees.values()) {
+            value.setSalary(value.getSalary() * index);
         }
-
-        return sum;
     }
+
+
 }
