@@ -52,6 +52,7 @@ public class EmployeeController {
 
     @GetMapping(path = "/index-salary")
     public Map<String, Employee> updateSalary(@RequestParam int index){
-        return salary.updateSalary(index);
+        salary.updateSalary(employeeBook.getAllEmployee(), index);
+        return employeeBook.getAllEmployee();
     }
 }

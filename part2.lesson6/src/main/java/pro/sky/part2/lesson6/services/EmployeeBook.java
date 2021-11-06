@@ -10,5 +10,5 @@ public interface EmployeeBook {
 
     List<String> getFullnames();
 
-    void updateSalary(float index);
+    void updateSalary(Map<String, Employee> emp, float index);
 }

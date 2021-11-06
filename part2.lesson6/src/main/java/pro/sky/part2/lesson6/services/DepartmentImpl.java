@@ -3,7 +3,9 @@ package pro.sky.part2.lesson6.services;
 import org.springframework.stereotype.Service;
 import pro.sky.part2.lesson6.data.Employee;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -42,7 +44,8 @@ public class DepartmentImpl implements Department {
         return salary.getSalary(employees);
     }
 
-    private Map<String, Employee> getEmployeeDepartmentId(int departmentId) {
+    @Override
+    public Map<String, Employee> getEmployeeDepartmentId(int departmentId) {
         Map<String, Employee> employees = employeeBook.getAllEmployee();
         Map<String, Employee> employeesDepartment = new HashMap<>();
 
@@ -52,5 +55,15 @@ public class DepartmentImpl implements Department {
             }
         }
         return employeesDepartment;
+    }
+
+    @Override
+    public List<String> prepareEmployDepartmentPrint(Map<String, Employee> emp) {
+        List<String> list = new ArrayList<>();
+        for (Employee value : emp.values()) {
+            list.add(value.getFullname() + " " + value.getSalary());
+        }
+
+        return list;
     }
 }

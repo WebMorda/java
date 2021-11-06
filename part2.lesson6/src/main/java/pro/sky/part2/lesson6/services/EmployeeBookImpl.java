@@ -40,11 +40,9 @@ public class EmployeeBookImpl implements EmployeeBook {
     }
 
     @Override
-    public void updateSalary(float index) {
-        for (Employee value : employees.values()) {
-            value.setSalary(value.getSalary() * index);
+    public void updateSalary(Map<String, Employee> emp, float index) {
+        for (Employee value : emp.values()) {
+            employees.get(value.getFullname()).setSalary(value.getSalary() * index);
         }
     }
-
-
 }

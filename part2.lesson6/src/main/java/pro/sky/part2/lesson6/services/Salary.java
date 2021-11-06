@@ -13,5 +13,5 @@ public interface Salary {
 
     int getAverageSalary(Map<String, Employee> employees);
 
-    Map<String, Employee> updateSalary(int index);
+    void updateSalary(Map<String, Employee> emp, int index);
 }

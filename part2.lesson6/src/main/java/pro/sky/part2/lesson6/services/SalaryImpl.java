@@ -19,9 +19,8 @@ public class SalaryImpl implements Salary {
     }
 
     @Override
-    public Map<String, Employee> updateSalary(int index) {
-        employeeBook.updateSalary(1 + (index / 100f));
-        return employeeBook.getAllEmployee();
+    public void updateSalary(Map<String, Employee> emp, int index) {
+        employeeBook.updateSalary(emp, 1 + (index / 100f));
     }
 
     private int sumSalary(Map<String, Employee> employees) {
