@@ -28,12 +28,12 @@ public class SalaryServiceImpl implements SalaryService {
 
     @Override
     public Employee getEmployeeMinSalary(List<Employee> employees) {
-        return employees.stream().min(Comparator.comparing(Employee::getSalary)).orElseThrow(NoSuchElementException::new);
+        return employees.stream().min(Comparator.comparing(Employee::getSalary)).orElseThrow();
     }
 
     @Override
     public Employee getEmployeeMaxSalary(List<Employee> employees) {
-        return employees.stream().max(Comparator.comparing(Employee::getSalary)).orElseThrow(NoSuchElementException::new);
+        return employees.stream().max(Comparator.comparing(Employee::getSalary)).orElseThrow();
 
     }
 

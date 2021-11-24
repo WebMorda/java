@@ -10,7 +10,6 @@ import pro.sky.part2.lesson7.services.EmployeeBookService;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/department")
@@ -34,13 +33,13 @@ public class DepartmentController {
     }
 
     @GetMapping(path = "/all")
-    public List<String> getAllEmployeeDepartment(@RequestParam(required = false) Integer d) {
+    public List<Employee> getAllEmployeeDepartment(@RequestParam(required = false) Integer d) {
         if (d != null) {
-            return employeeBookService.employeesByDepartment(departmentService.getEmployeeDepartmentId(d));
+            return employeeBookService.getEmployeesByDepartment(departmentService.getEmployeeByDepartmentId(d));
         }else {
             List<Employee> employees = employeeBookService.getAllEmployee();
             employees.sort(Comparator.comparing(Employee::getDepartment));
-            return employeeBookService.employeesByDepartment(employees);
+            return employeeBookService.getEmployeesByDepartment(employees);
         }
     }
 }

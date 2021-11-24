@@ -10,6 +10,6 @@ public interface DepartmentService {
     Employee getEmployeeMaxSalaryInDepartment(int departmentId);
     double getAverageSalary(int departmentId);
     double getSalaryDepartment(int departmentId);
-    List<Employee> getEmployeeDepartmentId(int departmentId);
-    List<String> prepareEmployDepartmentPrint(List<Employee> emp);
+    List<Employee> getEmployeeByDepartmentId(int departmentId);
+    List<String> printEmployeeByDepartmentId(int departmentId);
 }

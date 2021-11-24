@@ -1,8 +1,8 @@
 package pro.sky.part2.lesson7.data;
 
 public class Employee {
-    private String firstName;
-    private String lastname;
+    private final String firstName;
+    private final String lastname;
     private int department;
     private double salary;
 

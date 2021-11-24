@@ -1,36 +1,39 @@
 package pro.sky.part2.lesson7.services;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import pro.sky.part2.lesson7.data.Employee;
+import pro.sky.part2.lesson7.exception.BadRequestException;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeBookServiceImpl implements EmployeeBookService {
-    private List<Employee> employees;
+    private final Map<String, Employee> employees;
 
     public EmployeeBookServiceImpl() {
-        employees = new ArrayList<>();
-        employees.add(new Employee("Аркадий", "Аверченко", 3, 100));
-        employees.add(new Employee("Корней", "Чуковский", 3, 130));
-        employees.add(new Employee("Иван","Бунин", 3, 90));
-        employees.add(new Employee("Владимир", "Маяковский", 4, 80));
-        employees.add(new Employee("Анна", "Ахматова", 2, 115));
-        employees.add(new Employee("Осип", "Мандельштам", 2, 105));
-        employees.add(new Employee("Александр", "Блок", 1, 95));
-        employees.add(new Employee("Зинаида", "Гиппиус", 1, 110));
-        employees.add(new Employee("Фёдор", "Сологуб", 1, 75));
-        employees.add(new Employee("Иннокентий", "Анненский", 1, 85));
+        employees = new HashMap<>();
+        employees.put("Аверченко Аркадий" ,new Employee("Аркадий", "Аверченко", 3, 100));
+        employees.put("Чуковский Корней" ,new Employee("Корней", "Чуковский", 3, 130));
+        employees.put("Бунин Иван", new Employee("Иван","Бунин", 3, 90));
+        employees.put("Маяковский Владимир", new Employee("Владимир", "Маяковский", 4, 80));
+        employees.put("Ахматова Анна", new Employee("Анна", "Ахматова", 2, 115));
+        employees.put("Мандельштам Осип", new Employee("Осип", "Мандельштам", 2, 105));
+        employees.put("Блок Александр", new Employee("Александр", "Блок", 1, 95));
+        employees.put("Гиппиус Зинаида", new Employee("Зинаида", "Гиппиус", 1, 110));
+        employees.put("Сологуб Фёдор", new Employee("Фёдор", "Сологуб", 1, 75));
+        employees.put("Анненский Иннокентий", new Employee("Иннокентий", "Анненский", 1, 85));
     }
 
     @Override
     public List<Employee> getAllEmployee() {
-        return new ArrayList<>(employees);
+        return new ArrayList<>(employees.values());
     }
 
     @Override
     public List<String> getFullNames(){
-        return employees.stream().map(Employee::getFullname).toList();
+        return employees.values().stream().map(Employee::getFullname).toList();
     }
 
     @Override
@@ -39,17 +42,23 @@ public class EmployeeBookServiceImpl implements EmployeeBookService {
     }
 
     @Override
-    public List<String> employeesByDepartment(List<Employee> employees) {
-        int department = 0;
-        List<String> emp = new ArrayList<>();
-        for (Employee employee : employees) {
-            if (employee.getDepartment() != department){
-                department = employee.getDepartment();
-                emp.add("Отдел №" + department);
-            }
-            emp.add(employee.getFullname() + " " + employee.getSalary());
+    public List<Employee> getEmployeesByDepartment(List<Employee> employees) {
+        return employees.stream()
+                .sorted(Comparator.comparing(Employee::getDepartment).thenComparing(Employee::getFullname))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Employee searchEmployee(String fName, String lName){
+        if (!StringUtils.containsAny(fName, "+-*/_=") && StringUtils.isAlphaSpace(fName)
+        && !StringUtils.containsAny(lName, "+-*/_=") && StringUtils.isAlphaSpace(lName)){
+            lName = StringUtils.capitalize(lName);
+            fName = StringUtils.capitalize(fName);
+
+            return employees.get(lName + " " + fName);
+        } else {
+            throw new BadRequestException();
         }
 
-        return emp;
     }
 }

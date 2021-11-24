@@ -12,5 +12,7 @@ public interface EmployeeBookService {
 
     void updateSalary(List<Employee> emp, double index);
 
-    List<String> employeesByDepartment(List<Employee> employees);
+    List<Employee> getEmployeesByDepartment(List<Employee> employees);
+
+    Employee searchEmployee(String fName, String lName);
 }
