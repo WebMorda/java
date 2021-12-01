@@ -1,6 +1,5 @@
 package pro.sky.lesson11.controllers;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,7 +10,7 @@ import pro.sky.lesson11.services.OrderService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/store/order")
+@RequestMapping("/order")
 public class OrderController {
 
     private final OrderService orderService;
@@ -21,7 +20,7 @@ public class OrderController {
     }
 
     @GetMapping(path = "/add")
-    public List<Product> addProduct(@RequestParam int[] id){
+    public List<Integer> addProduct(@RequestParam List<Integer> id){
 
         return orderService.addProduct(id);
     }

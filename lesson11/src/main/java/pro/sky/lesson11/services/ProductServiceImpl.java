@@ -2,7 +2,6 @@ package pro.sky.lesson11.services;
 
 import org.springframework.stereotype.Service;
 import pro.sky.lesson11.data.Product;
-import pro.sky.lesson11.services.ProductService;
 
 import java.util.HashMap;
 import java.util.Map;

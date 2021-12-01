@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface OrderService {
     List<Product> getListProduct();
-    List<Product> addProduct(int[] id);
+    List<Integer> addProduct(List<Integer> id);
 }
